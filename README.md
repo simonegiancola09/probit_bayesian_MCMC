@@ -29,9 +29,10 @@ Implementation of a Metropolis Hastings and a Gibbs Algorithm to estimate the pa
 
 ### Structure of the Repository
 
-Assignment description files:
-* aa
-* bb
+Assignment_files: material provided for the assignment describing requirements
+* Computation Statistics Project.pdf : assignment description and desired outcomes
+* Albert and Chib 1993.pdf : main paper to reference
+* Bayesian Probit.pdf : slides with further description and hints about the problem
 
 Report Files:
 * cc

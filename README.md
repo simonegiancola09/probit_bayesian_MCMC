@@ -8,6 +8,27 @@ Implementation of a Metropolis Hastings and a Gibbs Algorithm to estimate the pa
 * Liscai Dario
 * Marchetti Simone
 
+### Theoretical Knowledge and Techniques used
+* Linear Algebra
+* Probability & Statistics
+* Generalized Linear Models
+    * Fisher Information
+    * MLE
+    * OLS
+* Bayesian Probability
+* Markov Chain Monte Carlo Algorithms
+    * Metropolis Hastings Algorithm
+    * Gibbs Sampling Algorithm
+    * Markov Chain convergence diagnostic checks
+* Python Programming
+    * Numpy
+    * Matplotlib
+    * Scipy
+    * prototyping
+    * parameter exploration
+
+### Structure of the Repository
+
 Assignment description files:
 * aa
 * bb

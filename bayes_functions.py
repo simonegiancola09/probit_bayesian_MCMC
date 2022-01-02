@@ -1,6 +1,9 @@
 ###### BAYES FUNCTIONS ###########################
 ### assuming MLE
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
+
 from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 from scipy.optimize import minimize
 def prior_MLE(beta, stretch = 100):
@@ -66,5 +69,37 @@ def posterior_beta_Y(beta, Y, X, take_log=False, prior = prior_MLE):
     return np.log(prior(beta)) + likelihood(Y, X, beta, True)
   post = prior(beta) * likelihood(Y, X,  beta, False)
   return post
+
+def plot_likelihood(likelihood, Y, X, beta_true, take_log, colors = colors):
+  '''
+  Function plots likelihood estimation for a set of toy values
+
+  '''
+  if take_log:
+    x = np.linspace(beta_true - 3, beta_true + 3, 1000)
+  else:
+    x = np.linspace(beta_true - .5, beta_true + .6, 1000)
+  y = []
+  fig = plt.figure(figsize = (12, 8))
+  for i in range(1000):
+    if take_log:
+      l = likelihood(Y, X, x[i,:], True)
+      #l = posterior_beta_Y(x[i,:], Y, X, log=True)
+    else:
+      l = likelihood(Y, X, x[i,:], False)
+      # l = posterior_beta_Y(x[i,:], Y, X, take_log=False)
+    y.append(l)
+  for j in range(beta_true.shape[0]):
+    plt.plot(x[:,j], y, c=colors[j])
+    plt.axvline(beta_true[j], c = colors[j], label = 'beta {}'.format(j), linestyle = 'dashed')
+  # main options to set for a single plot
+  plt.legend()
+  plt.xlabel('Beta range')
+  plt.ylabel('Likelihood')
+  plt.title('Likelihood function for all dimensions of beta')
+  plt.close(fig) # as to not show it when called, only if the variable is called
+  return fig
+
+
 
 ##################################################

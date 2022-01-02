@@ -27,7 +27,7 @@ def plot_different_priors(beta_0 = np.zeros(p+1), tau = 3, iterations = 5000, pr
     Can specify a priors dictionary with custom names and functions or use the default one. 
     Default is standard normal, uninformative and multivariate t student
     '''
-    dim = starting_point.shape[0]
+    dim = beta_0.shape[0]
     fig, ax = plt.subplots(dim, figsize = (16,12))
     if priors is None:
       priors = {prior_MLE : "Standard Normal", prior_uninformative : "Uninformative", 
@@ -48,7 +48,7 @@ def plot_different_priors(beta_0 = np.zeros(p+1), tau = 3, iterations = 5000, pr
     return fig
 
 
-def plot_normal_priors_different_stretch(starting_point = np.zeros(p+1), tau = 3, stretch = [1,5, 100], iterations = 5000):
+def plot_normal_priors_different_stretch(beta_0 = np.zeros(p+1), tau = 3, stretch = [1,5, 100], iterations = 5000):
     '''
     Plot the cumulative mean evolution of the result using different stretch for the normal prior with cov matrix stretch*I.
     Here the hypermarameter of the model such as tau and iterations are predefined, also the starting point beta_0. However
@@ -60,11 +60,11 @@ def plot_normal_priors_different_stretch(starting_point = np.zeros(p+1), tau = 3
         keys.append(lambda x: prior_MLE(x, stretch = stretch[i]))
         priors[keys[i]] = f"Prior with stretch {stretch[i]}"
     l = []
-    dim = starting_point.shape[0]
+    dim = beta_0.shape[0]
     fig, ax = plt.subplots(dim, figsize = (15,15))
     for prior in priors.keys():
             print(f'{priors[prior]}')
-            betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0, tau = tau, burnin = 0, iterations_after_burnin = iterations, log=True, verbose=False)
+            betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0 = beta_0, tau = tau, burnin = 0, iterations_after_burnin = iterations, log=True, verbose=False)
             l.append(betas)
     keys_2 = list(priors.keys())
     for dimension in range(dim):

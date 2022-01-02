@@ -64,7 +64,7 @@ def plot_normal_priors_different_stretch(starting_point = np.zeros(p+1), tau = 3
     fig, ax = plt.subplots(dim, figsize = (15,15))
     for prior in priors.keys():
             print(f'{priors[prior]}')
-            betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0, tau = tau, 0, iterations, log=True, verbose=False)
+            betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0, tau = tau, burnin = 0, iterations_after_burnin = iterations, log=True, verbose=False)
             l.append(betas)
     keys_2 = list(priors.keys())
     for dimension in range(dim):

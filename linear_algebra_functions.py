@@ -1,5 +1,6 @@
 ######### LINEAR ALGEBRA FUNCTIONS ###############
 import numpy as np
+from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 def eta(X, beta):
   '''
   calculate eta which is the dot product of observations and the vector

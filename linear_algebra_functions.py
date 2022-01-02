@@ -1,5 +1,5 @@
 ######### LINEAR ALGEBRA FUNCTIONS ###############
-
+import numpy as np
 def eta(X, beta):
   '''
   calculate eta which is the dot product of observations and the vector

@@ -61,7 +61,7 @@ def plot_triple_dim_accepted_rejected(thetas, dimensions = (0,1,2), plot_theta_t
   if plot_rejected:
     ax1.plot(rejected[np.where(chain_rejected==True)][:200,dim1],
             rejected[np.where(chain_rejected==True)][:200,dim2],
-             rejected[np.where(acc_rej==True)][:200,dim3],
+             rejected[np.where(chain_rejected==True)][:200,dim3],
             'rx', label='Rejected', alpha=.5)
   if plot_theta_true:
     ax1.plot(beta_true[dim1], beta_true[dim2], beta_true[dim3], '.',

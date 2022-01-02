@@ -162,7 +162,7 @@ def plot_accepted_rejected(thetas, dimension=0, ax = None, plot_theta_true=True,
   ax.scatter(np.where(chain_rejected==False), final[np.where(chain_rejected==False)], marker='.', c='b', label='Accepted',alpha=0.8)
   if plot_theta_true:
     ax.hlines(beta_true[dimension], 0, l, label='Beta true', alpha=1, linewidth=3)
-  ax.hlines(betas_mean_try[dimension], 0, l, label='Estimated Beta', alpha=1, color='g', ls='solid', linewidth=3)
+  ax.hlines(thetas[:,dimension].mean(), 0, l, label='Estimated Beta', alpha=1, color='g', ls='solid', linewidth=3)
   ax.legend()
   plt.close(fig)
   return fig

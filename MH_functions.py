@@ -6,6 +6,7 @@ from mpl_toolkits import mplot3d
 
 from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 from scipy.optimize import minimize
+from bayes_functions import *
 #####################################################
 
 ###### METROPOLIS HASTINGS FUNCTIONS ###############

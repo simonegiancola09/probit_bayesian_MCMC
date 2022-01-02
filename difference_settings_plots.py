@@ -8,7 +8,6 @@ from mpl_toolkits import mplot3d
 
 from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 from scipy.optimize import minimize
-from MH_functions import MetropolisAlgorithm
 #####################################################
 
 ###### MATPLOTLIB SETTINGS #########################
@@ -65,7 +64,7 @@ def plot_normal_priors_different_stretch(starting_point = np.zeros(p+1), tau = 3
     fig, ax = plt.subplots(dim, figsize = (15,15))
     for prior in priors.keys():
             print(f'{priors[prior]}')
-            betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0, tau_try, 0, iterations, log=True, verbose=False)
+            betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0, tau = tau, 0, iterations, log=True, verbose=False)
             l.append(betas)
     keys_2 = list(priors.keys())
     for dimension in range(dim):
@@ -106,7 +105,7 @@ def plot_different_starting_betas(dimension, starting_values, tau = 1, iteration
   return fig
 
 
-def plot_different_taus(plot_type, tau_low, tau_high, dimension, iterations=5000):
+def plot_different_taus(plot_type, tau_low, tau_high, dimension, iterations=5000, beta_0 = beta_null):
   '''
   Plot the cumulative mean (plot_type != Acceptance) or the Acceptance rate (plot_type = Acceptance) using 
   different values of taus. The function takes as parameter the lowest and highest value of tau to use.

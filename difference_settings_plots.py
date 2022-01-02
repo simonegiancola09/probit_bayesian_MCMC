@@ -21,7 +21,7 @@ colors = ['tab:cyan', 'tab:purple', 'tab:olive', 'tab:red', 'tab:orange',
 
 
 
-def plot_different_priors(starting_point = np.zeros(p+1), tau = 3, iterations = 5000, priors = None):
+def plot_different_priors(beta_0 = np.zeros(p+1), tau = 3, iterations = 5000, priors = None):
     '''
     Plot the cumulative mean evolution of the result using different prior specifications in the algorithm.
     Can specify a priors dictionary with custom names and functions or use the default one. 
@@ -35,7 +35,7 @@ def plot_different_priors(starting_point = np.zeros(p+1), tau = 3, iterations = 
     l = []
     for prior in priors.keys():
         print(f'Prior is: {priors[prior]}')
-        betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0, tau = tau, burnin = 0, iterations_after_burnin = iterations, log=True, verbose=False)
+        betas, mean_betas, _, _ = MetropolisAlgorithm(Y, X, beta_0 = beta_0, tau = tau, burnin = 0, iterations_after_burnin = iterations, log=True, verbose=False)
         l.append(betas)
     keys = list(priors.keys())
     for dimension in range(dim):

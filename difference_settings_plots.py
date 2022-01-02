@@ -8,6 +8,7 @@ from mpl_toolkits import mplot3d
 
 from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 from scipy.optimize import minimize
+from MH_functions import MetropolisAlgorithm
 #####################################################
 
 ###### MATPLOTLIB SETTINGS #########################

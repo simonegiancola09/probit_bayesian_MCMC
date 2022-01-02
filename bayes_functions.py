@@ -6,6 +6,12 @@ from mpl_toolkits import mplot3d
 
 from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 from scipy.optimize import minimize
+plt.rc('legend', fontsize=11)
+plt.rc('xtick', labelsize=12)
+plt.rc('ytick', labelsize=12)
+colors = ['tab:cyan', 'tab:purple', 'tab:olive', 'tab:red', 'tab:orange',
+                  'tab:brown', 'tab:pink', 'tab:gray', 'tab:green', 'tab:blue']
+##################################################
 def prior_MLE(beta, stretch = 100):
   '''
   Prior is normally distributed centered around the MLE for the parameter

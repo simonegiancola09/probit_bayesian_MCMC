@@ -7,6 +7,8 @@ from mpl_toolkits import mplot3d
 
 from scipy.stats import norm, multivariate_normal, bernoulli, multivariate_t, uniform
 from scipy.optimize import minimize
+from scipy.stats import kde
+
 #####################################################
 
 ###### MATPLOTLIB SETTINGS #########################
@@ -43,6 +45,36 @@ def plot_trace_dimension(thetas, dimension = 0, ax = None, plot_theta_true = Tru
   ax.plot(np.ones(len(theta_i)) * theta_i.mean(), label = 'beta {} mean'.format(dimension), c = colors[1])
   if plot_theta_true:
     ax.plot(np.ones(len(theta_i)) * theta_true, label = 'beta {} True'.format(dimension), c = colors[2])
+  ax.legend()
+  plt.close(fig) # to avoid showing it
+  return fig
+
+def plot_density_dimension(thetas, dimension = 0, ax = None, plot_theta_true = True):
+  '''
+  Plot for a given dimension of the parameter the density of the values stored.
+  Should present a somewhat normal behavior hopefully centered around beta true. 
+  Ideally, call function.show() to plot it. 
+  We will sample 1000 points
+  '''
+  if plot_theta_true:
+    theta_true = beta_true.flatten()[dimension]
+  theta_i = thetas[:, dimension]
+  fig = plt.figure()
+  density = kde.gaussian_kde(theta_i)
+  x_points = np.linspace(np.min(theta_i), np.max(theta_i), 1000)
+  if ax is None:
+    ax = plt.gca()
+    # single plot, set some decorator values
+    # ax.legend()
+    plt.xlabel('Space')
+    plt.ylabel('Density')
+    plt.title('density for the parameter at dimension {}'.format(dimension))
+  else:
+    ax.set_title('Dimension {}'.format(dimension), fontsize = 10)
+  ax.plot(x_points, density(x_points), label = 'beta {} density'.format(dimension), c = colors[0])
+  ax.axvline(theta_i.mean(), label = 'beta {} mean'.format(dimension), c = colors[1])
+  if plot_theta_true:
+    ax.axvline(theta_true, label = 'beta {} True'.format(dimension), c = colors[2])
   ax.legend()
   plt.close(fig) # to avoid showing it
   return fig

@@ -1,6 +1,6 @@
 # probit_bayesian_MCMC
 ## MS in Data Science
-Implementation of a Metropolis Hastings and a Gibbs Algorithm to estimate the parameters of a Probit linear model on simulated and real data. 
+Implementation & theory of a Metropolis Hastings and a Gibbs Algorithm to estimate the parameters of a Probit linear model on simulated and real data. 
 
 ### Authors
 * Chiavarino Federico
